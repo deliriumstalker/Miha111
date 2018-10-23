@@ -65,6 +65,7 @@ TestResults
 .builds
 sharedassets0.assets.*
 build/
+Build*.zip
 
 # Visual C++ cache files
 ipch/
