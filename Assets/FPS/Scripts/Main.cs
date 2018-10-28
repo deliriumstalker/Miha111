@@ -13,6 +13,7 @@ namespace FPS
         public DragController DragController { get; private set; }
         public WeaponController WeaponController { get; private set; }
         public AudioSource PlayerAudioSource;
+        public GameObject Canvas;
 
         private GameObject _hit;
         private LayerMask _movableObjectLayer;

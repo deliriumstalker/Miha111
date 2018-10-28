@@ -11,15 +11,18 @@ namespace FPS
 
         public override void Fire()
         {
-            if (!TryShoot()) return;
-
-            BaseAmmo bullet = Instantiate(_ammoPrefab, _firePoint.position, _firePoint.rotation);
-            bullet.Initialize(_force);
+            if (TryShoot())
+            {
+                CreateBullet();
+                AmmoInMag--;
+                RefreshHUD();
+            }
         }
 
-        public override void Reload()
+        protected override void CreateBullet()
         {
-            //потом
+            BaseAmmo bullet = Instantiate(_ammoPrefab, _firePoint.position, _firePoint.rotation);
+            bullet.Initialize(_force);
         }
     }
 }

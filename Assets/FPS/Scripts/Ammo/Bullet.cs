@@ -9,13 +9,14 @@ namespace FPS
     {
         [SerializeField] private float _destroyTime = 2f;
         [SerializeField] private LayerMask _layerMask;
-
+        private ParticleSystem _hitParticle;
         private bool _isHitted = false;
         private float _speed;
         
         public override void Initialize(float force)
         {
             _speed = force;
+            _hitParticle = GetComponent<ParticleSystem>();
         }
 
         private void FixedUpdate()
@@ -32,7 +33,9 @@ namespace FPS
                 IDamageable d = hit.collider.GetComponent<IDamageable>();
                 if (d != null) d.ApplyDamage(_damage);
 
-                Destroy(gameObject, 0.3f);
+                //IsVisible = false;
+                _hitParticle.Play();
+                Destroy(gameObject, 0.2f);
             }
             else
             {
